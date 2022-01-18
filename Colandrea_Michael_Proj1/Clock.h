@@ -19,9 +19,10 @@ public:
 									// Setting Integers to the int value of the time 
 									// For instance tm_hour is a int in a struct called TM which allows us to grab the info of the HOURS column in the struct.
 	// Standard Variables
-	int strdHours = strd->tm_hour; 
+	int strdHours = strd->tm_hour;  
 	int strdMins = strd->tm_min;
 	int strdSecs = strd->tm_sec;
+
 	// Military Variables
 	int milHours = mil->tm_hour;
 	int milMins = mil->tm_min;
@@ -30,6 +31,7 @@ public:
 	
 
 public:
+	// Functions for adding time based on each Time Conversion
 	void AddMinuteStandard(int& time);
 	void AddHourStandard(int& time );
 	void AddSecStandard(int& time);

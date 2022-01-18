@@ -23,40 +23,53 @@ void Clock::RollOver()
 {
 									// Rollover is implace to make sure minutes and seconds don't go over the timings of a normal clock.
 									// For instance rollover makes sure you can not have a time of "1:60:00pm"
-	if (strdMins > 59) // Checks seperately if user exceeds 59
+									// 
+	// Checks seperately if user exceeds 59
+	if (strdMins > 59) 
 	{
 		strdMins = 0;
 		strdHours += 1;
 	}
-	if (strdSecs > 59)// Checks seperately if user exceeds 59
+
+	// Checks seperately if user exceeds 59
+	if (strdSecs > 59)
 	{
 		strdSecs = 0;
 		strdMins += 1;
 	}
-	if (strdSecs > 59 && strdMins > 59 || strdMins == 60) // Checks if Seconds Exceeds 59 and then if the minutes exceed 59
+
+	// Checks if Seconds Exceeds 59 and then if the minutes exceed 59
+	if (strdSecs > 59 && strdMins > 59 || strdMins == 60) 
 	{
 		strdMins = 0;
 		strdSecs = 0;
 		strdHours += 1;
 	}
-	if (milMins > 59)// Checks seperately if user exceeds 59
+
+	// Checks seperately if user exceeds 59
+	if (milMins > 59)
 
 	{
 		milMins = 0;
 		milHours += 1;
 	}
-	if (milSecs > 59)// Checks seperately if user exceeds 59
+
+	// Checks seperately if user exceeds 59
+	if (milSecs > 59)
 	{
 		milSecs = 0;
 		milMins += 1;
 	}
-	if (milSecs > 59 && milMins > 59 || milMins == 60) // Checks if Seconds Exceeds 59 and then if the minutes exceed 59
+
+	// Checks if Seconds Exceeds 59 and then if the minutes exceed 59
+	if (milSecs > 59 && milMins > 59 || milMins == 60) 
 	{
 		milMins = 0;
 		milSecs = 0;
 		milHours += 1;
 	}
 }
+// Simple function logic, takes in a parameter of which time you want to change. Later will add amount of incremenet rather then default (1)
 void Clock::AddHourStandard(int& time )
 {
 	strdHours = time;
