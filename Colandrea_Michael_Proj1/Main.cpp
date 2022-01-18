@@ -1,9 +1,10 @@
-/*
+﻿/*
 # Created By Michael Colandrea
 # Created On 1/13/2022
 # CS-210 Project 1
 */
 
+// Includes // 
 #include <iostream>
 #include <ctime>
 #include <chrono>
@@ -11,13 +12,14 @@
 #include "Main.h"
 #include "Clock.h"
 #include <iomanip>
-#include<Windows.h>
+#include<Windows.h> 
+
 using namespace std;
 
 // Forward Declaration //
 void ShowClock();
 
-
+ 
 
 int main()
 {
@@ -35,10 +37,9 @@ void ShowClock()
 	string tod; // tod == Time Of Day
 		
 	
-
-
 	while (selection != 4)
 	{
+		
 		clck.RollOver();
 		// Checking if time frame is AM or PM based on time conversion
 		if (clck.strdHours > 1 && clck.milHours >= 12 && clck.milHours < 24)
@@ -50,6 +51,10 @@ void ShowClock()
 		}
 
 		// Converting Military time to standard clock
+		if (clck.strdHours == 0)
+		{
+			clck.strdHours = 12;
+		}
 		if (clck.strdHours > 12 && tod == "AM") // Resets standard time
 		{
 			clck.strdHours -= 12;
@@ -66,7 +71,8 @@ void ShowClock()
 		{
 			clck.milHours = 0;
 		}
-		
+		cout << "\t\t\t\t\t\t   CHADA TECH" << endl;
+		cout << "\n\n\n";
 		cout << "\t\t\t      " << "12-Hour Clock" << "\t\t\t      " << "24-Hour Clock" << endl;
 		cout << "\t\t\t" << "------------------------" << "\t\t" << "------------------------" << endl;
 		cout << "\t\t\t\t" << setfill('0') << setw(2) << clck.strdHours << ":" <<  setfill('0') << setw(2) << clck.strdMins << ":" << setfill('0') << setw(2) << clck.strdSecs << " " << tod << "\t"
@@ -76,14 +82,15 @@ void ShowClock()
 		cout << "\n\n";
 
 		cout << "\t\t\t\t\tPlease Select from the following\n" << endl;
-		cout << "\t\t\t\t\t     1. Add One Hour\n" << endl;
-		cout << "\t\t\t\t\t     2. Add One Minute\n" << endl;
-		cout << "\t\t\t\t\t     3. Add One Second\n" << endl;
-		cout << "\t\t\t\t\t     4. Exit Program\n" << endl;
+		cout << "\t\t\t\t\t      1. Add One Hour\n" << endl;
+		cout << "\t\t\t\t\t      2. Add One Minute\n" << endl;
+		cout << "\t\t\t\t\t      3. Add One Second\n" << endl;
+		cout << "\t\t\t\t\t      4. Exit Program\n" << endl;
 		
 		cin >> selection;
+		cin.clear();
+		cin.ignore(INT_MAX, '\n');
 		system("CLS");
-		
 		switch (selection)
 		{
 		case 1:
@@ -106,6 +113,9 @@ void ShowClock()
 			break;
 
 		default:
+			
+			system("CLS");
+			cout << "Invalid Command" << endl;
 			break;
 		}
 	}
